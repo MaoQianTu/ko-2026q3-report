@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>可口可乐（KO）2026 Q3 财报深度 + 农夫山泉对比 — 投研部 2026-10-28</title>
+<style>
+  :root{
+    --navy:#16243f; --navy2:#1f3357; --gold:#c9a227; --gold-soft:#e7d9a8;
+    --ink:#1d2733; --muted:#5b6776; --line:#e3e8ef;
+    --red:#d8392f; --redbg:#fdecea; --redbd:#f3b6b1;
+    --amber:#d98a00; --amberbg:#fef4e3; --amberbd:#f3d39a;
+    --green:#2e9e5b; --greenbg:#e8f6ee; --greenbd:#b6e3c8;
+    --bg:#eef1f5; --card:#ffffff; --shadow:0 4px 18px rgba(22,36,63,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.75; font-size:15px;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{display:flex;max-width:1280px;margin:0 auto;gap:28px;padding:0 22px 80px}
+  .toc{position:sticky;top:24px;align-self:flex-start;width:230px;flex:0 0 230px;
+    background:var(--card);border-radius:14px;padding:20px 16px;box-shadow:var(--shadow);
+    max-height:calc(100vh - 48px);overflow:auto}
+  .toc h4{font-size:12px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:12px}
+  .toc a{display:block;padding:7px 10px;border-radius:8px;color:var(--muted);font-size:13.5px;
+    border-left:3px solid transparent;transition:.18s}
+  .toc a:hover{background:#f4f6fa;color:var(--ink)}
+  .toc a.active{background:#f1f5fb;color:var(--navy);border-left-color:var(--gold);font-weight:600}
+  .toc .sub{padding-left:22px;font-size:12.5px}
+  .main{flex:1;min-width:0}
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#243a63 100%);
+    color:#fff;border-radius:18px;padding:42px 40px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .hero::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(201,162,39,.35),transparent 70%);border-radius:50%}
+  .eyebrow{color:var(--gold-soft);font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+  .hero h1{font-family:"Noto Serif SC","Songti SC",serif;font-size:32px;line-height:1.3;margin:12px 0 8px;font-weight:800}
+  .hero .sub{font-size:16px;color:#cdd7e6;font-weight:300}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;position:relative;z-index:1}
+  .meta .chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    padding:6px 13px;border-radius:999px;font-size:12.5px;color:#e6ecf5}
+  .meta .chip b{color:var(--gold-soft)}
+  section{background:var(--card);border-radius:16px;padding:30px 32px;margin-top:22px;box-shadow:var(--shadow)}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid var(--line)}
+  .sec-head .num{background:var(--navy);color:#fff;font-size:13px;font-weight:700;width:30px;height:30px;
+    border-radius:8px;display:flex;align-items:center;justify-content:center;flex:0 0 30px}
+  .sec-head h2{font-size:21px;font-weight:800;color:var(--navy)}
+  .sec-head .stars{margin-left:auto;color:var(--gold);font-size:13px;letter-spacing:1px}
+  h3{font-size:16.5px;color:var(--navy2);margin:24px 0 12px;font-weight:700;display:flex;align-items:center;gap:8px}
+  h3 .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+  p{margin:10px 0;color:#33414f}
+  .verdict{border-radius:14px;padding:22px 26px;margin:6px 0 18px;
+    background:linear-gradient(135deg,#fdecea,#fff3f1);border:1px solid var(--redbd)}
+  .verdict .tag{display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:13px;
+    padding:4px 14px;border-radius:999px;letter-spacing:.05em}
+  .verdict h3{margin:12px 0 6px;color:var(--red);font-size:18px}
+  .verdict p{color:#5a2b27;margin:6px 0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:16px 0}
+  .card{border:1px solid var(--line);border-radius:13px;padding:18px 18px 16px;position:relative;background:#fff;border-top:4px solid var(--line)}
+  .card.red{border-top-color:var(--red)}
+  .card.amber{border-top-color:var(--amber)}
+  .card.green{border-top-color:var(--green)}
+  .card .label{font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:.02em}
+  .card .val{font-size:30px;font-weight:800;color:var(--navy);margin:6px 0 2px;line-height:1.1}
+  .card .val small{font-size:14px;font-weight:600;color:var(--muted)}
+  .card .note{font-size:12px;color:var(--muted);margin-top:4px}
+  .card .sev{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px}
+  .sev.red{background:var(--redbg);color:var(--red)}
+  .sev.amber{background:var(--amberbg);color:var(--amber)}
+  .sev.green{background:var(--greenbg);color:var(--green)}
+  .keypoints{list-style:none;counter-reset:k}
+  .keypoints li{counter-increment:k;position:relative;padding:12px 16px 12px 50px;margin:10px 0;
+    background:#f8fafc;border-left:4px solid var(--gold);border-radius:0 10px 10px 0;font-size:14.5px}
+  .keypoints li::before{content:counter(k);position:absolute;left:14px;top:12px;width:24px;height:24px;
+    background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:700}
+  .keypoints b{color:var(--navy)}
+  .tbl-wrap{overflow-x:auto;margin:14px 0;border-radius:12px;border:1px solid var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
+  thead th{background:var(--navy);color:#fff;text-align:left;padding:11px 14px;font-weight:600;font-size:13px;white-space:nowrap}
+  tbody td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:#f8fafc}
+  tbody tr:hover{background:#f1f5fb}
+  td .em{font-weight:700;color:var(--navy)}
+  td.red{color:var(--red);font-weight:700}
+  td.amber{color:var(--amber);font-weight:700}
+  td.green{color:var(--green);font-weight:700}
+  .badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+  .badge.red{background:var(--redbg);color:var(--red)}
+  .badge.amber{background:var(--amberbg);color:var(--amber)}
+  .badge.green{background:var(--greenbg);color:var(--green)}
+  .badge.navy{background:#e7eefb;color:var(--navy)}
+  .chart{margin:18px 0;background:#fafbfd;border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .chart .ctitle{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:14px;letter-spacing:.03em}
+  .bar-row{display:flex;align-items:center;gap:12px;margin:9px 0}
+  .bar-row .blab{width:118px;flex:0 0 118px;font-size:13px;color:var(--ink);text-align:right}
+  .bar-row .btrack{flex:1;background:#eef1f5;border-radius:6px;height:22px;position:relative;overflow:hidden}
+  .bar-row .bfill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;
+    padding-right:8px;color:#fff;font-size:12px;font-weight:700}
+  .bfill.red{background:linear-gradient(90deg,#e0584f,var(--red))}
+  .bfill.amber{background:linear-gradient(90deg,#e7a83f,var(--amber))}
+  .bfill.navy{background:linear-gradient(90deg,#39527e,#16243f)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--muted)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .lights{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+  .light{display:flex;align-items:center;gap:8px;background:#f8fafc;border:1px solid var(--line);
+    border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600}
+  .light .ld{width:14px;height:14px;border-radius:50%}
+  .ld.red{background:var(--red);box-shadow:0 0 0 4px var(--redbg)}
+  .ld.amber{background:var(--amber);box-shadow:0 0 0 4px var(--amberbg)}
+  .ld.green{background:var(--green);box-shadow:0 0 0 4px var(--greenbg)}
+  .note-box{background:#f4f7fb;border:1px solid #d8e2f0;border-left:4px solid var(--navy);
+    border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-size:14px}
+  .warn-box{background:var(--amberbg);border:1px solid var(--amberbd);border-left:4px solid var(--amber);
+    border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-size:14px}
+  .quote{background:#f8fafc;border-left:4px solid var(--gold);padding:14px 20px;margin:16px 0;
+    font-size:15px;color:var(--navy2);font-style:italic;border-radius:0 10px 10px 0}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:900px){.two-col{grid-template-columns:1fr}.toc{display:none}}
+  .foot{margin-top:22px;background:#fff;border-radius:16px;padding:24px 32px;box-shadow:var(--shadow);
+    font-size:12.5px;color:var(--muted);border-top:4px solid var(--gold)}
+  .foot b{color:var(--navy)}
+  .disclaimer{background:var(--redbg);border:1px solid var(--redbd);border-radius:12px;padding:16px 20px;margin-top:14px;
+    font-size:13px;color:#6b332e}
+  #toTop{position:fixed;right:26px;bottom:26px;width:46px;height:46px;border-radius:50%;background:var(--navy);
+    color:#fff;border:none;cursor:pointer;font-size:20px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.3s;z-index:50}
+  #toTop.show{opacity:1;visibility:visible}
+  @media print{body{background:#fff}.toc{display:none}section,.hero,.foot{box-shadow:none;break-inside:avoid}
+    #toTop{display:none}.wrap{display:block;max-width:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <h4>目录导航</h4>
+    <a href="#s0">导言 · 8 条结论</a>
+    <a href="#s1">一、Q3 财报速览</a>
+    <a href="#s2">二、20+ 年长期轨迹</a>
+    <a href="#s3">三、业务版块与产业链</a>
+    <a href="#s4">四、经营问题与风险</a>
+    <a href="#s5">五、估值历史对比</a>
+    <a href="#s6">六、KO vs 农夫山泉</a>
+    <a href="#s7">七、农夫能否超长线收息</a>
+    <a href="#s8">八、操作建议</a>
+    <a href="#s9" class="sub">九、数据来源与校验</a>
+  </nav>
+
+  <div class="main">
+
+    <header class="hero">
+      <div class="eyebrow">股哥·投研部 · 内部研究参考</div>
+      <h1>可口可乐（KO）2026 Q3 财报深度<br>+ 农夫山泉对比</h1>
+      <div class="sub">一份"质量比表面更好、但价格 20 年最贵"的收息标的拆解</div>
+      <div class="meta">
+        <span class="chip">报告时间 <b>2026-10-28</b></span>
+        <span class="chip">KO 收盘 <b>$91.18</b></span>
+        <span class="chip">农夫山泉 <b>HK$40.52</b></span>
+        <span class="chip">财季截止 <b>2026-10-02</b></span>
+      </div>
+    </header>
+
+    <!-- S0 导言 -->
+    <section id="s0">
+      <div class="sec-head"><div class="num">★</div><h2>导言 · 8 条结论先看</h2></div>
+
+      <div class="verdict">
+        <span class="tag">一句话</span>
+        <h3>KO 证明了定价权仍在、销量回来了、杠杆在降，但也暴露北美见顶 + 提价收窄 + 现金流两年塌陷</h3>
+        <p>农夫山泉是门更好的生意，但"超长线收息底仓"这个位置轮不到它——<b>64 年的分红信用无法用 6 年补齐</b>。</p>
+      </div>
+
+      <ol class="keypoints">
+        <li><b>【财报】高质量超预期</b>：营收 $13,380M（+7%）、有机营收 +7%、UCV +5%、可比 EPS $0.91（+11%），连续第三季上调指引（FY26 可比 EPS 至少 +11%、FCF 至少 $13.0B）。</li>
+        <li><b>【引擎换了】</b>：有机 +7% 里 UCV 贡献 +5%、price/mix 仅 +1%——从"提价驱动"切到"销量驱动"。长期利好，但<b>涨价红利见顶</b>。</li>
+        <li><b>【北美是唯一堵点】</b>：北美 UCV <b>零增长</b>、收入仅 +2%，管理层承认"需求疲弱"并把"去库存"列为观察点。北美占收入 <b>40.2%</b>。</li>
+        <li><b>【结构分化】</b>：拉美供血（+25% 但汇率贡献 +9pct，剔汇 +14%）、装瓶投资 +261%（低基数）、亚太以价换量（price/mix −2%）、EMEA 稳但丢了 NARTD 份额。</li>
+        <li><b>【暗雷在现金流】</b>：2024/2025 FCF 派息率 <b>176.3% / 165.8%</b>，OCF/净利跌破 <b>0.64 / 0.57</b>（22 年最差）——过去两年是"借债分红"。2026 修复至约 67%。</li>
+        <li><b>【估值贵，股债比价 19 年最差】</b>：PE 26.9x（20 年 84% 分位）、股息率 2.33%（20 年第二低）。10Y 美债 5.00%，利差 −267bp、处 19.4 年 0.5% 分位。合理区间 $77.6 / $86.2 / $96.1（熊/基准/牛）。</li>
+        <li><b>【农夫山泉】</b>：模式部分相似、本质不同——KO 是"品牌+浓缩液"收租方，农夫是"水源+自建渠道"重资产。农夫<b>生意质量更好</b>（营业利润率 37.61% vs 32.23%、零负债），但<b>收息资格不够</b>（分红史仅 6 年、家族控股 84%、流通 15.9%）。<b>有条件可以，仅限卫星仓</b>。</li>
+        <li><b>【操作】</b>：KO 现价<b>不建议新增仓位</b>，舒服建仓区 $78–82；农夫<b>现价不买</b>，等 HKD 33–35。同等收息需求下 <b>PEP（股息率 4.43%）和 KOF（3.68%）比 KO 划算</b>。两家都"不急"。</li>
+      </ol>
+
+      <h3><span class="dot"></span>三个口径纠正（读全文前必看）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>常见误解</th><th>实际情况</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>KO 有 6 个分部（含 Global Ventures）</td><td><b>已改为 5 个</b>：EMEA / Latin America / North America / Asia Pacific / Bottling Investments + Corporate。"Global Ventures" 在 10-Q 检索 0 次命中</td><td>KO 10-Q 2026Q2 Note 16</td></tr>
+          <tr><td>2</td><td>"巴菲特 2024 年 8 月清仓可口可乐"</td><td><b>不成立</b>。伯克希尔 400,000,000 股从 2024-12-31 至 2026-06-30 连续 7 个报告期一股未动</td><td>SEC 13F-HR</td></tr>
+          <tr><td>3</td><td>9M 派息 $6,842M（+56%）是特别股息</td><td><b>不是</b>。财季截止日漂移使 2026 多进一笔 10/1 派息；逐季反算误差仅 0.1%</td><td>提莫</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- S1 -->
+    <section id="s1">
+      <div class="sec-head"><div class="num">1</div><h2>第一章：Q3 财报速览</h2></div>
+      <p><b>本章判断：质量优于表观。</b>营收 +7%、经营利润 +12% 的漂亮数字里，汇率贡献 3pct、一次性项目 1pct，<b>真实经营增长 +8%</b>（可比汇率中性）。UCV +5% 说明增长是"卖出来的"而非"涨出来的"——更可持续。</p>
+
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>指标</th><th>Q3 2026</th><th>Q3 2025</th><th>同比</th><th>读数</th></tr></thead>
+        <tbody>
+          <tr><td>净营收</td><td>$13,380M</td><td>$12,455M</td><td><b>+7%</b></td><td class="green">有机口径同为 +7%</td></tr>
+          <tr><td>营业利润（GAAP）</td><td>$4,465M</td><td>$3,982M</td><td><b>+12%</b></td><td class="amber">含汇率顺风 3pct</td></tr>
+          <tr><td>营业利润（可比汇率中性）</td><td>—</td><td>—</td><td><b>+8%</b></td><td class="green">真实经营增速</td></tr>
+          <tr><td>归母净利</td><td>$4,009M</td><td>$3,696M</td><td><b>+8%</b></td><td class="amber">被税率拖累</td></tr>
+          <tr><td>摊薄 EPS</td><td>$0.93</td><td>$0.86</td><td>+8%</td><td class="amber"></td></tr>
+          <tr><td><b>可比 EPS（Non-GAAP）</b></td><td><b>$0.91</b></td><td>$0.82</td><td><b>+11%</b></td><td class="green">经营真貌</td></tr>
+          <tr><td>毛利率</td><td>63.16%</td><td>61.48%</td><td><b>+168bp</b></td><td class="green">20 年最高</td></tr>
+          <tr><td>营业利润率（GAAP）</td><td>33.37%</td><td>31.97%</td><td>+140bp</td><td class="green"></td></tr>
+          <tr><td>实际税率</td><td>16.08%</td><td>11.96%</td><td><b>+412bp</b></td><td class="red">吃掉约 4pct 净利增速</td></tr>
+          <tr><td><b>UCV（单位箱销量）</b></td><td>—</td><td>—</td><td><b>+5%</b></td><td class="green">核心亮点</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="quote">关键读法：GAAP EPS 只涨 8% 而可比 EPS 涨 11%，差额来自非美养老金解约 −$192M 与 IRS 存款利息 +$57M 等一次性项互抵；税率 +412bp 是净利增速低于营业利润增速的主因。</div>
+
+      <h3><span class="dot"></span>量价拆分 ★ 本次财报最重要的一张表（Q3 2026，同比 %）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>分部</th><th>浓缩液</th><th>Price/Mix</th><th>汇率</th><th>并购</th><th>报告营收</th><th>有机营收</th><th>UCV</th></tr></thead>
+        <tbody>
+          <tr><td><b>合并</b></td><td>+7</td><td><b>+1</b></td><td>+1</td><td>−1</td><td><b>+7</b></td><td><b>+7</b></td><td><b>+5</b></td></tr>
+          <tr><td>EMEA</td><td>+6</td><td>+1</td><td>0</td><td>−3</td><td>+4</td><td>+7</td><td>+5</td></tr>
+          <tr><td>Latin America</td><td>+8</td><td><b>+7</b></td><td><b>+9</b></td><td>0</td><td>+25</td><td>+16</td><td>+6</td></tr>
+          <tr><td>North America</td><td>+2</td><td>+1</td><td>0</td><td>0</td><td>+3</td><td>+3</td><td><b>0</b></td></tr>
+          <tr><td>Asia Pacific</td><td>+8</td><td><b>−2</b></td><td>−3</td><td>0</td><td>+4</td><td>+6</td><td>+6</td></tr>
+          <tr><td>Bottling Investments</td><td>+10</td><td>+3</td><td>+1</td><td>0</td><td>+13</td><td>+12</td><td>+8</td></tr>
+        </tbody>
+      </table></div>
+      <p>三个判断：① 增长引擎从提价切到销量（长期健康，但涨价红利见顶）；② 北美进入"零提价+零销量"（占收入 40.2% 的最大市场失速）；③ 亚太"以价换量"（UCV +6% 但 price/mix −2%，唯一负值）。</p>
+
+      <h3><span class="dot"></span>分部收入与利润（Q3 2026）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>分部</th><th>净营收</th><th>同比</th><th>营业利润</th><th>同比</th><th>利润率</th><th>收入占比</th></tr></thead>
+        <tbody>
+          <tr><td>North America</td><td>$5,386M</td><td>+3%</td><td>$1,766M</td><td>+5%</td><td>32.8%</td><td><b>40.2%</b></td></tr>
+          <tr><td>EMEA</td><td>$3,104M</td><td>+4%</td><td>$1,171M</td><td>+7%</td><td>37.7%</td><td>23.2%</td></tr>
+          <tr><td>Latin America</td><td>$1,958M</td><td><b>+25%</b></td><td>$1,152M</td><td><b>+29%</b></td><td><b>58.8%</b></td><td>14.6%</td></tr>
+          <tr><td>Asia Pacific</td><td>$1,563M</td><td>+4%</td><td>$563M</td><td>+8%</td><td>36.0%</td><td>11.7%</td></tr>
+          <tr><td>Bottling Investments</td><td>$1,523M</td><td>+13%</td><td>$205M</td><td><b>+261%</b></td><td>13.5%</td><td>11.4%</td></tr>
+          <tr><td>Corporate</td><td>$38M</td><td>+8%</td><td>($392M)</td><td>−45%</td><td>—</td><td>0.3%</td></tr>
+          <tr><td><b>合并</b></td><td><b>$13,380M</b></td><td><b>+7%</b></td><td><b>$4,465M</b></td><td><b>+12%</b></td><td><b>33.4%</b></td><td>100%</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>去杠杆：被低估的亮点</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>项目</th><th>2026-10-02</th><th>2025-12-31</th><th>变动</th></tr></thead>
+        <tbody>
+          <tr><td>现金及等价物</td><td>$13,454M</td><td>$10,270M</td><td>+$3,184M</td></tr>
+          <tr><td>长期债务</td><td>$36,623M</td><td>$42,119M</td><td><b>−$5,496M</b></td></tr>
+          <tr><td><b>总债务</b></td><td><b>$41,619M</b></td><td>$45,492M</td><td><b>−$3,873M</b></td></tr>
+          <tr><td><b>净债务</b></td><td><b>$28,165M</b></td><td>$35,222M</td><td><b>−$7,057M（−20%）</b></td></tr>
+          <tr><td>ROE（TTM）</td><td>42.1%</td><td>—</td><td class="amber">⚠️ 被权益缩水推高</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>指引：连续第三季上调</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>指标</th><th>FY2026 当前</th><th>FY2026 原</th><th>FY2027 初步</th></tr></thead>
+        <tbody>
+          <tr><td>有机营收</td><td><b>至少 +5%</b></td><td>约 +5%</td><td>—</td></tr>
+          <tr><td>并购剥离影响</td><td>逆风约 2%</td><td>逆风 2–3%</td><td><b>逆风约 8%</b></td></tr>
+          <tr><td>可比汇率中性 EPS</td><td><b>至少 +9%</b></td><td>+7~8%</td><td>—</td></tr>
+          <tr><td><b>可比 EPS</b></td><td><b>至少 +11%</b></td><td>+9~10%</td><td>汇率逆风 + 剥离逆风 2pct</td></tr>
+          <tr><td><b>自由现金流</b></td><td><b>至少 $13.0B</b></td><td>约 $12.4B</td><td>—</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">CEO Henrique Braun：本季度体现了系统的持续势头。价值份额连续 22 个季度提升；但成本压力、去库存、汇率仍是观察点，管理层同时承认北美需求疲弱（CNBC）。<br>可口可乐不披露订单（order book）——业务模式是"浓缩液卖装瓶商 + 装瓶商卖零售"，无制造业意义上的在手订单。可替代先行指标：UCV +5% 🟢｜浓缩液发货 +7% 🟢｜NARTD 价值份额连续 22 季提升 🟢｜渠道库存（去库存压力）🔴。</div>
+    </section>
+
+    <!-- S2 -->
+    <section id="s2">
+      <div class="sec-head"><div class="num">2</div><h2>第二章：20+ 年长期经营轨迹</h2></div>
+      <p><b>本章判断：</b>KO 过去 20 年不是"衰落的老牌消费股"，而是"先衰退、后修复、现在创新高"。毛利率走 U 型：2011–2017 真实下滑，2022 年触底 58.1% 后连升 4 年，<b>2026 Q3 毛利率 63.16%、经营利润率 33.37%，双创 2004 年以来新高</b>。</p>
+
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>年度</th><th>营收 $M</th><th>归母净利 $M</th><th>EPS</th><th>毛利率</th><th>经营利润率</th><th>OCF/净利</th><th>FCF $M</th><th>DPS</th><th>FCF派息率</th></tr></thead>
+        <tbody>
+          <tr><td>2004</td><td>21,742</td><td>4,847</td><td>2.00</td><td>64.7%</td><td>26.2%</td><td>1.23</td><td>5,213</td><td>1.00</td><td>46.6%</td></tr>
+          <tr><td>2011</td><td>46,542</td><td>8,584</td><td>1.85</td><td><b>60.9%</b></td><td><b>21.9%</b></td><td>1.10</td><td>6,554</td><td>0.94</td><td>65.6%</td></tr>
+          <tr><td><b>2015（收购年）</b></td><td>44,294</td><td>7,351</td><td>1.67</td><td>60.5%</td><td><b>19.7% ⬇</b></td><td>1.43</td><td>7,975</td><td>1.32</td><td>72.0%</td></tr>
+          <tr><td>2017</td><td>36,212</td><td>1,248</td><td>0.29</td><td>62.1%</td><td>21.4%</td><td>5.64</td><td>5,291</td><td>1.48</td><td><b>119.4%⚠</b></td></tr>
+          <tr><td>2020</td><td>33,014</td><td>7,747</td><td>1.79</td><td><b>59.3%</b></td><td>27.3%</td><td>1.27</td><td>8,667</td><td>1.64</td><td>81.3%</td></tr>
+          <tr><td>2022</td><td>43,004</td><td>9,542</td><td>2.19</td><td><b>58.1% ⬇最低</b></td><td>25.4%</td><td>1.15</td><td>9,534</td><td>1.76</td><td>79.9%</td></tr>
+          <tr><td>2025</td><td>47,941</td><td>13,107</td><td>3.04</td><td>61.6%</td><td><b>28.7%</b></td><td><b>0.57 ⚠</b></td><td>5,296</td><td>2.04</td><td><b>165.8% ⚠</b></td></tr>
+          <tr><td><b>2026 TTM</b></td><td><b>51,054</b></td><td><b>14,629</b></td><td><b>3.39</b></td><td><b>62.32%</b></td><td><b>32.23%</b></td><td>1.11</td><td><b>14,282</b></td><td>2.12</td><td>~60%</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="note-box"><b>全篇最重要的认知纠偏：</b>近 10 年营收 CAGR 仅 <b>0.79%</b>（几乎零增长），但净利 CAGR <b>5.95%</b>、近 5 年营收 CAGR 反升到 <b>7.75%</b>。原因：2015–2020 年 KO 把大量低毛利装瓶收入移出报表（再特许经营 refranchising），营收"缩水"但经营利润率从 2015 年 19.7% 升到 2025 年 28.7%。<b>这是主动瘦身，不是业务萎缩——用营收增速评价 KO 是错的。</b></div>
+
+      <h3><span class="dot"></span>★ 现金流质量：这是 KO 当前最严重的问题</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>年份</th><th>OCF $B</th><th>净利 $B</th><th>OCF/净利</th><th>FCF $B</th><th>FCF派息率</th></tr></thead>
+        <tbody>
+          <tr><td>2004</td><td>5.968</td><td>4.847</td><td>1.23</td><td>5.213</td><td>46.6%</td></tr>
+          <tr><td>2021</td><td>12.625</td><td>9.771</td><td>1.29</td><td>11.258</td><td>64.4%</td></tr>
+          <tr><td><b>2024</b></td><td>6.805</td><td>10.631</td><td><b>0.64 ⚠</b></td><td>4.741</td><td><b>176.3% ⚠</b></td></tr>
+          <tr><td><b>2025</b></td><td>7.408</td><td>13.107</td><td><b>0.57 ⚠</b></td><td>5.296</td><td><b>165.8% ⚠</b></td></tr>
+          <tr><td><b>2026 指引</b></td><td>≥15.2</td><td>—</td><td>—</td><td><b>≥13.0</b></td><td>约 67%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="quote">🚨 这是最容易被漏掉的负面证据：市场只看到"营收 +7%、EPS +11%、上调指引"，但看到 2024–2025 的 OCF/净利 0.64/0.57，就知道那两年的高分是拿现金流换来的。</div>
+
+      <h3><span class="dot"></span>结构性下滑？四个指标逐个审查</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>指标</th><th>是否结构性下滑</th><th>证据</th></tr></thead>
+        <tbody>
+          <tr><td>毛利率</td><td class="green">❌ 不成立</td><td>2004 年 64.7% → 2022 触底 58.1% → 2026Q3 63.16%，U 型修复完成</td></tr>
+          <tr><td>ROIC</td><td class="green">❌ 不成立</td><td>当前 20.80% vs WACC 5.72%，超额约 15pct（改善主要来自轻资产化）</td></tr>
+          <tr><td>销量 UCV</td><td class="amber">⚠️ 区域分化</td><td>全球 Q3 +5%，但北美 0%。全球没下滑，北美已停滞</td></tr>
+          <tr><td>FCF</td><td class="amber">⚠️ 真实恶化</td><td>2024 $4,741M、2025 $5,296M 远低于 2021 $11,258M；2026 TTM 修复至 $14,282M</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>三次危机验证：KO 从未断息</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>危机</th><th>KO 的实际表现</th><th>股息动作</th><th>股价最大回撤</th></tr></thead>
+        <tbody>
+          <tr><td>2008–2009 金融危机</td><td>2009 营收 −3.0%，净利 +17.5%</td><td>✅ 继续增息</td><td><b>−34.2%</b></td></tr>
+          <tr><td>2020 疫情</td><td>单季有机营收 −26%（史上最差），全年 −11.4%，FCF 仍 $8,667M</td><td>✅ 继续增息 +2.5%</td><td>−24.2%</td></tr>
+          <tr><td>2022–2023 高通胀</td><td>毛利率触底 58.1%，靠 6–10% 提价对冲</td><td>✅ 继续增息 +4.5%、+5.4%</td><td>−13.4%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">规律：2008 年营收仅 −3.0%，股价却跌 34.2%（跌幅是基本面的 11 倍，纯估值从 24x 压到 17x）；2022–23 营收连年创新高，股价却跌 13.4%（纯利率杀估值）。<b>KO 的股息风险不在经营，在估值。</b></div>
+    </section>
+
+    <!-- S3 -->
+    <section id="s3">
+      <div class="sec-head"><div class="num">3</div><h2>第三章：业务版块与产业链 —— KO 的钱怎么赚</h2></div>
+      <p><b>本章判断：</b>KO 是<b>典型"轻资产品牌收租"模式</b>——把资本密集的灌装外包给装瓶商，自己只做浓缩液 + 品牌授权，以约 <b>4.4%</b> 的 capex 强度换取 <b>33.4%</b> 营业利润率。<b>最大受益者是 KO 股东，最大承压者是装瓶商</b>——而装瓶商利润恶化最终会反噬 KO 销量。</p>
+
+      <h3><span class="dot"></span>浓缩液分成：真实"抽水率"远低于市场传说</h3>
+      <p>市场常说"KO 拿走装瓶商净营收的 40–50%"。用 CCEP（欧洲最大装瓶商）实际披露算，<b>真实是 22–23%</b>。两个口径：浓缩液 ÷ 装瓶商净营收 = <b>22.8%</b>；浓缩液 ÷ COGS（EUR 6,936M）= <b>35.3%</b> ← 这才是"抽水率"的合理口径。40–50% 的说法把 COGS 全部原材料+折旧+制造费用混算了。</p>
+
+      <h3><span class="dot"></span>品牌方 vs 装瓶商：谁是好生意？</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>指标</th><th>KO（品牌方）</th><th>CCEP（欧洲装瓶）</th><th>KOF（拉美装瓶）</th></tr></thead>
+        <tbody>
+          <tr><td>营业利润率</td><td><b>33.4%</b></td><td>13.6%</td><td>14.9%</td></tr>
+          <tr><td>Capex / 收入</td><td><b>4.4%</b>（2025）</td><td>约 5%</td><td>未取得</td></tr>
+          <tr><td>资本投向</td><td>营销资产 + 浓缩液产能（轻）</td><td>灌装线、瓶胚、车队（重）</td><td>同左</td></tr>
+          <tr><td>派息率</td><td>约 60–70%（FCF 口径）</td><td>约 50%</td><td>传统高分红</td></tr>
+          <tr><td>估值（PE）</td><td><b>26.90x</b></td><td>22.45x</td><td><b>18.37x</b></td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">结论：<b>装瓶商不是更好的生意</b>——承担几乎全部资本密集度、全部糖/PET/铝成本波动、全部终端执行风险，换来不到 KO 一半的利润率。但对收息投资者有反向价值：装瓶商"估值低 + 分红稳定"，是"低质量高现金回报"标的，适合收息、不适合成长。</div>
+
+      <h3><span class="dot"></span>产业链最大隐患 + 渠道与健康化</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>区域（KOF Q3'26）</th><th>收入（可比）</th><th>营业利润（可比）</th><th>读数</th></tr></thead>
+        <tbody>
+          <tr><td>合并</td><td>+11.3%</td><td>+16.4%</td><td>健康，但含巴西保险理赔一次性</td></tr>
+          <tr><td><b>墨西哥 & 中美洲</b></td><td>+9.3%</td><td><b>−2.2%</b></td><td class="red">🔴 收量不收利</td></tr>
+          <tr><td>南美（巴西/哥伦比亚）</td><td>+14.1%</td><td>+52.3%</td><td class="amber">靠汇率 + 一次性理赔</td></tr>
+        </tbody>
+      </table></div>
+      <div class="quote">全球最大 KO 装瓶商在自己母国墨西哥营业利润已转负。KO 拉美"供血"的利润，有相当一部分是从装瓶商口袋转移过去的。若装瓶商持续恶化，会 ① 减少资本开支 → 陈列供应受损 → 反伤 KO 销量；② 游说要求降浓缩液价。这是 KO 高利润率最大的内生风险。</div>
+
+      <h3><span class="dot"></span>健康化：KO 应对有效，但品类天花板已现</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>单品/品类（CCEP H1'26）</th><th>增速</th><th>含义</th></tr></thead>
+        <tbody>
+          <tr><td>Coca-Cola Original Taste</td><td><b>−2.6%</b></td><td>含糖经典款在萎缩</td></tr>
+          <tr><td><b>Coca-Cola Zero Sugar</b></td><td><b>+10.7%</b>（全球 Q3 +16%）</td><td>无糖替代含糖，总量靠无糖补</td></tr>
+          <tr><td>RTD 即饮茶</td><td><b>−3.1%</b></td><td>德国、印尼品类本身萎缩</td></tr>
+          <tr><td><b>Energy</b></td><td><b>+18.6%</b>（份额 +230bps）</td><td>唯一强增长，但 KO 靠 Monster 合作</td></tr>
+          <tr><td>Sports</td><td>+12.1%</td><td>品类涨、KO 的运动饮料却 −3% → 份额丢失</td></tr>
+          <tr><td>NARTD 品类整体</td><td>价值 +4%、销量 +3%</td><td>品类还在长，但只有 3–4%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">健康化对 KO 是"可管理威胁"而非"致命威胁"——它把替代做成了增长引擎（Zero Sugar +16%），这是百事难匹敌的资产。<b>但真正的约束是品类天花板</b>：NARTD 整体只有 3–4% 增长，KO 的 UCV +5% 主要靠赢份额 + 新兴市场，靠份额挤压的路线会越来越贵。</div>
+    </section>
+
+    <!-- S4 -->
+    <section id="s4">
+      <div class="sec-head"><div class="num">4</div><h2>第四章：经营问题与风险清单</h2></div>
+      <p><b>本章判断：</b>KO 没有"生存级风险"（三轮回测营收跌幅均 &lt;12%、股息零中断），但有 <b>3 个正在发生的结构性风险</b>（北美需求见顶、提价空间耗尽、现金流质量塌陷）和 <b>1 个被忽视的财务问题</b>（借债分红）。</p>
+
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>档位</th><th>风险</th><th>量化证据</th><th>严重度</th></tr></thead>
+        <tbody>
+          <tr><td>🔴🔴 财务质量</td><td><b>现金流转化恶化</b></td><td>OCF/净利 2024 0.64 / 2025 0.57（22 年最差）；FCF 派息率 176.3%/165.8% = 借债分红</td><td class="red">最易被忽略</td></tr>
+          <tr><td>🔴 正在发生</td><td><b>北美需求见顶</b></td><td>北美 UCV 0%、price/mix +1%、收入 +2%（占收入 40.2%）；管理层公开承认需求疲弱</td><td class="red">最高优先级</td></tr>
+          <tr><td>🔴 正在发生</td><td><b>提价空间耗尽</b></td><td>合并 price/mix 从 2022–23 的 6–10% 降至 +1%；北美 +1%；亚太已 −2%</td><td class="red">高</td></tr>
+          <tr><td>🔴 正在发生</td><td><b>渠道去库存</b></td><td>管理层电话会明确将 "destocking" 列为观察点</td><td class="amber">中高（先行指标）</td></tr>
+          <tr><td>🟠 正在发生</td><td>装瓶商利润被挤压 → 反噬</td><td>KOF 墨西哥营业利润 −2.2%，母国市场转负</td><td class="amber">中高（结构性）</td></tr>
+          <tr><td>🟠 已发生</td><td><b>BODYARMOR 整合失败</b></td><td>运动饮料 Q3 UCV −3%；已发生 $960M 减值</td><td class="amber">中高</td></tr>
+          <tr><td>🟠 正在发生</td><td>商誉与无形资产减值敞口</td><td>商誉 2025 年 −$2.648B，剩余 $15.49B 仍有敞口</td><td class="amber">中高</td></tr>
+          <tr><td>🟠 正在发生</td><td>ROIC 回升部分靠"分母收缩"</td><td>卖资产（装瓶出表）抬升 ROIC，剥离结束后会被再拉低</td><td class="amber">中高</td></tr>
+          <tr><td>🟠 正在发生</td><td>中期增长目标实质下修</td><td>2023 年提的 7–9% → 2026 指引"至少 5%"；FY2027 剥离拖累扩大至 −8%</td><td class="amber">中高</td></tr>
+          <tr><td>🟠 正在发生</td><td>健康化侵蚀经典款</td><td>Original Taste −2.6%；RTD 茶 −3.1%；Fanta −0.6%</td><td class="amber">中（被 Zero +16% 对冲）</td></tr>
+          <tr><td>🟡 潜在</td><td>GLP-1 抑制含糖饮料</td><td>KO FY2025 10-K 全文检索 "GLP-1" = 0 次命中——公司零量化披露</td><td class="amber">⚠️ 未量化</td></tr>
+          <tr><td>🟡 潜在</td><td>关税 / 含糖税</td><td>10-K 中 8 次全为模板语言，Q3 财报 0 次提及——零量化</td><td class="amber">⚠️ 未量化</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>最该盯的单一指标：北美 UCV</h3>
+      <p>北美占收入 <b>40.2%</b>（$5,386M / $13,380M）、营业利润 <b>39.6%</b>（$1,766M / $4,465M），而 Q3 北美 UCV <b>已掉到 0%</b>、price/mix 仅 +1%。</p>
+      <div class="quote">🚨 如果 2027 年北美 UCV 转负并持续 4 个季度，那就是"连续增息 64 年"叙事开始失效的第一个真实信号。这比任何估值指标都重要。</div>
+    </section>
+
+    <!-- S5 -->
+    <section id="s5">
+      <div class="sec-head"><div class="num">5</div><h2>第五章：估值历史对比</h2></div>
+      <p><b>本章判断：不便宜，是 20 年来最贵的收息位置之一。</b> PE 处 20 年 84% 分位，股息率处 20 年 10% 分位（第二低）、10 年最低、5 年最低。但基本面确实是本轮最好——"贵"和"好"同时成立，这就是决策难点。</p>
+
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>指标</th><th>数值</th><th>读数</th></tr></thead>
+        <tbody>
+          <tr><td>收盘价（2026-10-27）</td><td><b>$91.18</b></td><td>52 周区间 $67.27–$95.37</td></tr>
+          <tr><td>52 周涨幅</td><td><b>+30.80%</b></td><td>现价距高点 −4.4%</td></tr>
+          <tr><td>总市值 / 企业价值 EV</td><td>$392.26B / $417.28B</td><td>—</td></tr>
+          <tr><td><b>PE (TTM)</b></td><td><b>26.90x</b></td><td class="red">🔴 20 年 84% 分位</td></tr>
+          <tr><td>PB</td><td>10.50</td><td class="red">🔴 P/TBV 41.27</td></tr>
+          <tr><td><b>EV/EBITDA</b></td><td><b>23.88x</b></td><td class="red">🔴 历史偏高</td></tr>
+          <tr><td><b>FCF Yield</b></td><td><b>3.64%</b></td><td class="amber">🟡 偏贵</td></tr>
+          <tr><td><b>股息率</b></td><td><b>2.33%</b></td><td class="red">🔴🔴 20 年第 2 低</td></tr>
+          <tr><td>ROIC / WACC</td><td><b>20.80% / 5.72%</b></td><td class="green">🟢 超额 15pct</td></tr>
+          <tr><td>Beta (5Y)</td><td>0.32</td><td class="green">🟢 低波动</td></tr>
+          <tr><td>分析师目标价</td><td>均值 $97.00（+6.38%），25 位 "Buy"</td><td class="amber">🟡 空间有限</td></tr>
+          <tr><td>空头兴趣</td><td>53.16M 股（流通 1.37%），上月 39.29M（+35%）</td><td class="amber">🟡 空头在增加</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>★ 历史极值复盘 + 合理价格</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>时点</th><th>PE</th><th>情境</th><th>后续</th></tr></thead>
+        <tbody>
+          <tr><td><b>2011 年末</b></td><td><b>18.06x</b>（20 年最低）</td><td>收购瓶装业务冲击，毛利率从 64% 掉到 60.9%</td><td>之后 5 年营收近乎零增长，但利润率修复带动股价</td></tr>
+          <tr><td><b>2016 年末</b></td><td>股息率 3.38%（20 年最高）</td><td>增长乏力 + 强势美元</td><td>之后 5 年股息 + 股价双升，历史最佳买点之一</td></tr>
+          <tr><td><b>2020 年末</b></td><td><b>30.64x</b>（20 年最高）</td><td>疫情放水 + 避险资金涌入必选消费</td><td>2021–22 年 PE 回落至 22–25x</td></tr>
+          <tr><td><b>当前</b></td><td>26.90x / 股息率 2.33%</td><td>Q3 基本面改善 + 一年涨 30.8%</td><td><b>未验证</b></td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">规律：KO 历史最佳买点都出现在"基本面看起来最差 + 股息率最高"（2011、2016）。<b>当前恰好相反——基本面最好、股息率最低。</b></div>
+
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>情景</th><th>合理价</th><th>距现价 $91.18</th></tr></thead>
+        <tbody>
+          <tr><td><b>熊</b></td><td><b>$77.6</b></td><td>−14.9%</td></tr>
+          <tr><td><b>基准</b></td><td><b>$86.2</b></td><td>−5.5%</td></tr>
+          <tr><td><b>牛</b></td><td><b>$96.1</b></td><td>+5.4%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="quote">现价落在"基准价之上、牛市价之下"，已把乐观情景计入一大半。$78–82 才是舒服的建仓区（股息率 2.6–2.7%、PE 约 23–24x）。</div>
+
+      <h3><span class="dot"></span>★★ 最关键的数字：股债性价比是 19 年来最差</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>指标</th><th>KO</th><th>美国 10Y</th><th>利差</th></tr></thead>
+        <tbody>
+          <tr><td>股息率</td><td><b>2.33%</b></td><td><b>5.00%</b></td><td><b>−267bp</b></td></tr>
+          <tr><td>盈利收益率（1/PE）</td><td>3.72%</td><td>5.00%</td><td>−128bp</td></tr>
+        </tbody>
+      </table></div>
+      <div class="quote">🚨 当前是 2009 年有完整数据以来、股息率相对 10 年期美债最不划算的时点——0.5 百分位，即历史上 99.5% 的时间都比现在更有吸引力。直白说：只有在"利率会下来 + KO 股息继续中高个位数增长"两个假设同时成立时，买 KO 才划算。</div>
+
+      <h3><span class="dot"></span>横向比价：KO 在防御资产里是最贵的之一</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>标的</th><th>PE</th><th>股息率</th><th>FCF Yield</th><th>52 周</th><th>读数</th></tr></thead>
+        <tbody>
+          <tr><td><b>KO（可口可乐）</b></td><td><b>26.90x</b></td><td><b>2.33%</b></td><td>3.64%</td><td><b>+30.8%</b></td><td class="red">🔴 高 PE + 低股息</td></tr>
+          <tr><td><b>PEP（百事）</b></td><td><b>16.79x</b></td><td><b>4.43%</b></td><td>5.76%</td><td>−11.9%</td><td class="green">🟢🟢 直接替代品，估值低 60%</td></tr>
+          <tr><td>MCD / PG / JNJ</td><td>20.26x / 23.99x / 40.81x</td><td>3.10% / 2.73% / 2.00%</td><td>—</td><td>—</td><td>🟢 / 🟡 / 🔴</td></tr>
+          <tr><td><b>KOF（拉美装瓶）</b></td><td><b>18.37x</b></td><td><b>3.68%</b></td><td>5.53%</td><td>—</td><td class="green">🟢 买可乐体系更划算</td></tr>
+          <tr><td>农夫山泉</td><td>23.04x</td><td>2.85%</td><td>—</td><td><b>−24.9%</b></td><td class="amber">🟡</td></tr>
+          <tr><td>伊利股份</td><td><b>17.93x</b></td><td><b>6.27%</b></td><td><b>9.99%</b></td><td>—</td><td class="green">🟢🟢（⚠️ 派息率 99.85%）</td></tr>
+          <tr><td>贵州茅台 / 海天</td><td>20.46x / —</td><td>3.90% / 4.07%</td><td>—</td><td>—</td><td class="green">🟢</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>长期总回报：KO 跑输大盘</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>期间</th><th>价格涨幅</th><th>价格年化</th><th>含息年化</th><th>S&P 500 含息年化</th><th>结论</th></tr></thead>
+        <tbody>
+          <tr><td>近 10 年</td><td>+120.0%</td><td>8.2%</td><td>约 9.8%</td><td>约 11.0%</td><td class="amber">⚠️ 略跑输</td></tr>
+          <tr><td>近 20 年</td><td>+126.2%</td><td>3.98%</td><td>约 5.4%</td><td>约 6.4%</td><td class="amber">⚠️ 明显跑输</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">可靠结论：KO 近 20 年价格年化约 4%、含息 5–6%，跑输大盘——与 Beta 0.32 的"抗跌但低弹性"定位一致。<b>买 KO 是为了"稳"，不是为了"赢"。</b></div>
+    </section>
+
+    <!-- S6 -->
+    <section id="s6">
+      <div class="sec-head"><div class="num">6</div><h2>第六章：KO vs 农夫山泉 —— 商业模式是同一类吗？</h2></div>
+      <p><b>本章判断：部分相似，本质不同。</b>两者都是高毛利、强品牌、现金流好的消费品，但 <b>KO 卖的是"配方和品牌"（收租），农夫卖的是"水和渠道"（自己干活）</b>。</p>
+
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>维度</th><th>可口可乐 (KO)</th><th>农夫山泉 (9633.HK)</th><th>谁更优</th></tr></thead>
+        <tbody>
+          <tr><td>产品形态</td><td>浓缩液/糖浆（卖给装瓶商，非成品）</td><td><b>成品水/饮料</b>（自产自销）</td><td>KO（轻资产）</td></tr>
+          <tr><td>价值链位置</td><td>品牌方 + 浓缩液供应商；装瓶外包</td><td><b>全产业链</b>：水源地→生产→经销</td><td>各有优劣</td></tr>
+          <tr><td>渠道结构</td><td>独立装瓶商体系（5 大伙伴占全球销量 44%）</td><td>自建直营 + 经销（约 4,000+ 经销商，200 万+ 终端）</td><td>KO（风险外部化）</td></tr>
+          <tr><td><b>资本开支强度</b></td><td><b>4.4%</b>（2025）</td><td><b>12.4%</b>（TTM）</td><td><b>KO 轻 3 倍</b></td></tr>
+          <tr><td><b>FCF/净利转化</b></td><td><b>0.98</b></td><td><b>0.84</b></td><td><b>KO</b></td></tr>
+          <tr><td>毛利率（TTM）</td><td>62.32%</td><td><b>60.81%</b></td><td>🟢 基本持平</td></tr>
+          <tr><td><b>营业利润率（TTM）</b></td><td>32.23%</td><td><b>37.61%</b></td><td>🏆 农夫 +538bp</td></tr>
+          <tr><td><b>净利率（TTM）</b></td><td>28.65%</td><td><b>30.23%</b></td><td>🏆 农夫</td></tr>
+          <tr><td>ROE / ROIC</td><td>40.59% / 20.80%</td><td><b>50.00% / 157.47%</b> ⚠️分母被净现金压小</td><td>🏆 农夫</td></tr>
+          <tr><td><b>净债务</b></td><td>净负债 $25.02B</td><td><b>净现金 HKD 31.08B</b></td><td>🏆 农夫零杠杆</td></tr>
+          <tr><td><b>FCF 派息率</b></td><td>165.8%（2025）⚠️</td><td><b>76.0%（2025）/ 90.0%（TTM）</b></td><td>🏆 农夫</td></tr>
+          <tr><td><b>连续增息</b></td><td><b>64–65 年</b>（1962 起，制度化）</td><td><b>6 年</b>（FY2024 仅 +1.3%）</td><td>🏆 KO</td></tr>
+          <tr><td>股权结构</td><td>机构 67.11%、流通 90.0%</td><td><b>创始人 84.07%</b>、机构 3.25%、流通 15.9%</td><td>🏆 KO</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>三个反直觉发现</h3>
+      <div class="keypoints">
+        <li><b>① 农夫山泉盈利能力全面优于可口可乐</b>——营业利润率 37.61% vs 32.23%、净利率 30.23% vs 28.65%、ROE 50.00% vs 40.59%。原因朴素：水是近零边际成本的资源；农夫没有装瓶商分走利润；零杠杆（KO 背 $25.02B 净债）。<b>在"生意质量"维度，农夫赢，而且赢得干净。</b></li>
+        <li><b>② 但农夫资本开支强度是 KO 的 3 倍</b>（12.4% vs 4.4%）→ FCF/净利 0.84 vs KO 0.98。农夫赚的每 1 元利润只有 8 毛 4 变成自由现金。<b>对"收息"而言，KO 的利润质量更好。</b></li>
+        <li><b>③ 最大的认知纠偏：农夫已经不是"卖水的公司"，2026 年它是"卖无糖茶的公司"。</b></li>
+      </div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>年份</th><th>包装水（百万元）</th><th>占比</th><th>即饮茶（百万元）</th><th>占比</th></tr></thead>
+        <tbody>
+          <tr><td>2021</td><td>17,058</td><td><b>57.4%</b></td><td>4,579</td><td>15.4%</td></tr>
+          <tr><td>2023</td><td>20,262</td><td>47.5%</td><td>12,659</td><td>29.7%</td></tr>
+          <tr><td><b>2024</b></td><td><b>15,952（−21.3%）</b></td><td>37.2%</td><td>16,745（+32.3%）</td><td>39.0%</td></tr>
+          <tr><td><b>TTM(Jun'26)</b></td><td><b>18,907</b></td><td><b>33.4%</b></td><td><b>24,630</b></td><td><b>43.5%</b></td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">三条推论：① 包装水五年只增长 10.8%（CAGR 2.0%），基本停滞——市场认为"水是护城河"，财务数据不支持；② 2024 年包装水暴跌 −21.3%（品牌舆情 + 价格战），"刚需抗周期"在压力下比想象中脆弱；③ 全部增长来自即饮茶（东方树叶），而无糖茶是竞争最惨烈、进入门槛最低、fad 属性最强的品类。结论：<b>农夫的真实风险不是"依赖包装水"，而是"增长完全押注在高竞争、低壁垒的无糖茶上"</b>。</div>
+    </section>
+
+    <!-- S7 -->
+    <section id="s7">
+      <div class="sec-head"><div class="num">7</div><h2>第七章：农夫山泉能否作为超长线收息标的？</h2></div>
+      <div class="verdict">
+        <span class="tag">有条件可以</span>
+        <h3>有条件可以（Conditional YES）—— 但只能做卫星仓</h3>
+        <p>农夫山泉拿到可口可乐"超长线收息"标准的约 81%（63/78 分）。这 2 成差距全集中在两项：① 分红历史年限（欠 35 年积累，只能等时间）② 治理与流动性（家族控股 84% + 流通盘 15.9%）。<b>换句话说：农夫的"生意"已经达标，"收息资格"还差时间与治理。</b></p>
+      </div>
+
+      <h3><span class="dot"></span>7.2 支持面 vs 制约面</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>面向</th><th>内容</th><th>量化</th></tr></thead>
+        <tbody>
+          <tr><td>✅ 支持</td><td><b>税后净股息率高于 KO</b></td><td>农夫 2.23%–2.29%（港股通 20%）vs KO 1.63%（30%）/ 1.86%（20% 合规）</td></tr>
+          <tr><td>✅ 支持</td><td>资产负债表最干净</td><td>净现金 HKD 31.08B，无净债务，净负债/EBITDA 0.21</td></tr>
+          <tr><td>✅ 支持</td><td>当前价位远好于 KO</td><td>农夫 52 周 16% 分位 vs KO 92% 分位；PE 23.04x vs 26.90x；EV/EBITDA 14.91x vs 23.88x</td></tr>
+          <tr><td>⚠️ 制约</td><td><b>股息无制度化承诺</b></td><td>FY2024 DPS 仅 +1.3%（近乎冻结），FY2025 才 +30.3%</td></tr>
+          <tr><td>⚠️ 制约</td><td><b>安全垫更薄</b></td><td>FCF 派息率 90.0%（TTM），2024 年曾达 185.2%</td></tr>
+          <tr><td>🚨 结构风险</td><td><b>增长引擎与护城河错配</b></td><td>包装水 CAGR +2.0%（2024 −21.3%）；增长全靠即饮茶 +37.8%（低壁垒高竞争）</td></tr>
+          <tr><td>🚨 结构风险</td><td><b>创始人绝对控股 + 流动性极差</b></td><td>钟睒睒 84.07%、流通 15.9%；日均成交额 US$0.27 亿（KO 的 1/55）</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>7.3 ★ 税后净股息率对比（内地投资者真实到手）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>标的</th><th>持有路径</th><th>税前</th><th>税后净股息率</th><th>税负</th></tr></thead>
+        <tbody>
+          <tr><td><b>KO</b></td><td>美股直持·30% 预提</td><td>2.33%</td><td><b>1.63%</b></td><td>−0.70pct</td></tr>
+          <tr><td><b>KO</b></td><td>美股直持·W-8BEN 协定 20% 合规</td><td>2.33%</td><td><b>1.86%</b></td><td>−0.47pct</td></tr>
+          <tr><td><b>农夫山泉</b></td><td><b>港股通·20% 代扣</b></td><td><b>2.86%</b></td><td><b>2.23%–2.29%</b></td><td>−0.57pct</td></tr>
+        </tbody>
+      </table></div>
+      <div class="quote">🚨 最大的反直觉发现："港股通 20% 股息税所以不如美股"是错的。农夫税前 2.86% 扣 20% 后仍有 2.29%；KO 税前 2.33% 扣 30% 后只剩 1.63%。<b>税负差异被税前股息率差异完全逆转</b>——对内地投资者，农夫在"到手现金回报"上是明确赢家，它输给 KO 的是"确定性"，不是"收益率"。</div>
+
+      <h3><span class="dot"></span>7.4 "超长线收息"加权打分表（KO = 78 分基准）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>维度</th><th>权重</th><th>KO</th><th>农夫山泉</th><th>差距原因</th></tr></thead>
+        <tbody>
+          <tr><td>生意长期稳定性/护城河</td><td>25%</td><td>9</td><td>7</td><td>全球化 vs 单一市场；引擎与护城河错配</td></tr>
+          <tr><td>分红可持续性（FCF 覆盖）</td><td>20%</td><td>7</td><td><b>8</b></td><td>农夫零杠杆</td></tr>
+          <tr><td><b>分红历史可信度（年限）</b></td><td>20%</td><td><b>10</b></td><td><b>3</b></td><td><b>6 年 vs 64 年（最大差距）</b></td></tr>
+          <tr><td>分红增长性</td><td>10%</td><td>5</td><td><b>9</b></td><td>农夫增速远超</td></tr>
+          <tr><td>估值吸引力</td><td>15%</td><td>5</td><td><b>7</b></td><td>农夫 PE/EV-EBITDA 更低</td></tr>
+          <tr><td><b>治理/透明度/流动性</b></td><td>10%</td><td><b>9</b></td><td><b>4</b></td><td><b>84% 家族 + 15.9% float</b></td></tr>
+          <tr><td><b>加权总分</b></td><td>100%</td><td><b>78</b></td><td><b>63</b></td><td><b>农夫 = KO 的 81%</b></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>7.5 农夫山泉分红历史（最该看的一张表）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>除息日</th><th>每股股息 (HKD)</th><th>同比</th><th>对应财年 DPS (CNY)</th></tr></thead>
+        <tbody>
+          <tr><td>2021-06-29</td><td>0.20435</td><td>—</td><td>0.45</td></tr>
+          <tr><td>2022-06-16</td><td>0.52969</td><td><b>+159.2%</b></td><td>0.68</td></tr>
+          <tr><td>2023-05-18</td><td>0.77000</td><td>+45.4%</td><td>0.75</td></tr>
+          <tr><td>2024-05-23</td><td>0.82000</td><td>+6.5%</td><td>0.76（仅 +1.3%，近乎冻结）</td></tr>
+          <tr><td>2025-05-22</td><td>0.82000</td><td><b>0.0%</b></td><td>—</td></tr>
+          <tr><td><b>2026-05-21</b></td><td><b>1.13000</b></td><td><b>+37.8%</b></td><td>0.99（+30.3%）</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">农夫不是"连续增息"公司，而是"3 年高增 → 近乎冻结 → 1 年跳增"。FY2024 的 +1.3% 是一个已经发生过的警告信号——它证明公司会在需要时停止增息，且不解释。因此对农夫<b>不能靠股息指标预警，必须改用「业绩 + FCF 派息率」双指标监控</b>。</div>
+    </section>
+
+    <!-- S8 -->
+    <section id="s8">
+      <div class="sec-head"><div class="num">8</div><h2>第八章：操作建议（情景研判）</h2></div>
+      <p><b>本章判断：</b>KO 现在适合"已持有继续收息"，不适合"现价新建仓"；农夫山泉"可以先观察，但还不够便宜"。核心矛盾：KO 基本面是最好的一年，但价格在 52 周 92% 分位、股息率 20 年第 2 低、股债比价 19 年最差。</p>
+
+      <h3><span class="dot"></span>8.1 可口可乐价位锚点</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>目标股息率</th><th>入手价位</th><th>距现价</th><th>税后净（30%）</th><th>税后净（20% 合规）</th></tr></thead>
+        <tbody>
+          <tr><td>2.65%</td><td><b>$80.00</b></td><td>−12.3%</td><td>1.86%</td><td>2.12%</td></tr>
+          <tr><td>2.83%</td><td><b>$75.00</b></td><td>−17.7%</td><td>1.98%</td><td>2.26%</td></tr>
+          <tr><td>3.03%</td><td>$70.00</td><td>−23.2%</td><td>2.12%</td><td>2.42%</td></tr>
+          <tr><td>3.20%</td><td>$66.25</td><td>−27.3%</td><td>2.24%</td><td>2.56%</td></tr>
+          <tr><td>3.50%</td><td>$60.57</td><td>−33.6%</td><td>2.45%</td><td>2.80%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="quote">🚨 "股息率 3.5% 才买"= 现在一手都不该买（要求 KO 跌 34–39%）。两种路径：纯收息派严格执行 3.2% 以上才买 → 现在观望；实质总回报派接受 2.33% 起点，用 3.92% 股息增长 + 回购换长期复利，但必须分批、不重仓。</div>
+
+      <h3><span class="dot"></span>8.2 农夫山泉价位锚点</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>方法</th><th>目标</th><th>入手价位</th><th>距现价 HK$40.52</th></tr></thead>
+        <tbody>
+          <tr><td>股息率法（年化 HK$1.13）</td><td>3.0%</td><td><b>HK$37.67</b></td><td>−7.0%</td></tr>
+          <tr><td>股息率法</td><td>3.5%</td><td><b>HK$32.29</b></td><td>−20.3%</td></tr>
+          <tr><td>PE 法（TTM EPS HK$1.76）</td><td>20x</td><td><b>HK$35.20</b></td><td>−13.1%</td></tr>
+          <tr><td>PE 法</td><td>18x</td><td><b>HK$31.68</b></td><td>−21.8%</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">两法交叉的合理入手带：HKD 33–35（PE 18.8–19.9x、税前股息率 3.27–3.47%、税后 2.62–2.78%）。当前 HK$40.52 <b>不新建仓</b>；HKD 35–38 可建 1/3 试探；HKD 33–35 建满目标仓位；HKD &lt;30 为加仓上限（若基本面未坏）。</div>
+
+      <h3><span class="dot"></span>8.3 离场纪律（情景研判）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>优先级</th><th>触发条件</th><th>当前读数</th><th>状态</th></tr></thead>
+        <tbody>
+          <tr><td>🔴 立即清仓</td><td>削减股息</td><td>64 年从未发生</td><td>✅ 安全</td></tr>
+          <tr><td>🟠 减仓一半</td><td>连续 2 个季度有机营收 &lt; 3%</td><td>Q3 +7%（9M +10%）</td><td>✅ 安全但需盯</td></tr>
+          <tr><td>🟠 减仓一半</td><td><b>北美 UCV 连续 4 个季度负增长</b></td><td>当前 0%</td><td class="amber">⚠️ 最需盯</td></tr>
+          <tr><td>🟡 暂停加仓</td><td>ROIC 跌破 WACC</td><td>20.80% vs 5.72%</td><td>✅ 4 倍缓冲</td></tr>
+          <tr><td>🟡 暂停加仓</td><td>净债务/EBITDA &gt; 4.0x</td><td>2.33x</td><td>✅ 安全</td></tr>
+          <tr><td>🟡 暂停加仓</td><td>FCF 派息率连续 2 年 &gt; 85%</td><td>63.8%（但 2024/25 曾 176%/166% ⚠️）</td><td class="amber">⚠️ 需盯</td></tr>
+        </tbody>
+      </table></div>
+      <div class="quote">KO 最重要的单一先行指标不是股价、不是 EPS，而是「北美 UCV」（当前 0%）。农夫最重要的不是股息率，而是「FCF 派息率」（当前 90%，已触警戒线）。</div>
+
+      <h3><span class="dot"></span>8.4 机构行为参考（不是跟随，是校准）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>阵营</th><th>机构</th><th>行为</th><th>信号强度</th></tr></thead>
+        <tbody>
+          <tr><td>信念持有不动</td><td><b>Berkshire Hathaway</b></td><td><b>400,000,000 股，连续 7 季零变动</b></td><td class="green">🟢 强（但"持有不动"≠"看多加仓"）</td></tr>
+          <tr><td><b>主动加仓</b></td><td><b>Norges Bank（挪威央行）</b></td><td>现货 +90.3%（5,195,087 股 / $422M）</td><td>⭐ 最有信号价值</td></tr>
+          <tr><td><b>主动加仓</b></td><td><b>FMR / Fidelity</b></td><td>+21.8%</td><td>⭐</td></tr>
+          <tr><td>被动再投资</td><td>BlackRock / Vanguard</td><td>+5.5% / +4.1%</td><td class="amber">🟡 机械性，非看多信号</td></tr>
+          <tr><td>主动减持</td><td>Quilter（−23.8%）、Alphinity（−17.4%）</td><td>减持</td><td class="amber">🟡 规模均 &lt;$300M</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>8.6 如果你只是想"收息 + 防御"：横向替代方案</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>优先级</th><th>标的</th><th>股息率</th><th>PE</th><th>为什么可能比 KO 更适合当下</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><b>PEP（百事）</b></td><td><b>4.43%</b></td><td><b>16.79x</b></td><td>KO 直接替代品，估值低 60%、股息率 1.9 倍</td></tr>
+          <tr><td>2</td><td><b>KOF（拉美装瓶）</b></td><td><b>3.68%</b></td><td>18.37x</td><td>同一个可乐体系、更低估值、更高股息</td></tr>
+          <tr><td>3</td><td><b>伊利股份</b></td><td><b>6.27%</b></td><td>17.93x</td><td>全表最优；⚠️ 派息率已达 99.85%</td></tr>
+          <tr><td>4</td><td><b>贵州茅台</b></td><td>3.90%</td><td>20.46x</td><td>护城河与 KO 同级但更便宜，利润率 47.86%</td></tr>
+          <tr><td>5</td><td><b>农夫山泉</b></td><td>2.85%</td><td>23.04x</td><td>中国消费复苏期权，非纯收息</td></tr>
+          <tr><td>—</td><td><b>KO（现价）</b></td><td>2.33%</td><td>26.90x</td><td class="red">🔴 同类防御资产中性价比最差</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note-box">上表仅为"同等收息需求下的横向比价参考"，<b>不是推荐买入</b>。各标的的经营风险、税务路径、汇率敏感受制于各自市场，需单独研究。</div>
+    </section>
+
+    <!-- S9 -->
+    <section id="s9">
+      <div class="sec-head"><div class="num">9</div><h2>附录：数据来源与校验说明</h2></div>
+      <h3><span class="dot"></span>A. 关键数据来源</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>数据类别</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td>KO Q3 2026 财报原文</td><td>SEC 8-K EX-99.1，accession 0001628280-26-067403</td></tr>
+          <tr><td>KO 10-Q（分部口径）</td><td>accession 0001628280-26-050503</td></tr>
+          <tr><td>KO 长期财务序列 2004–2025</td><td>SEC XBRL companyfacts API，CIK 0000021344</td></tr>
+          <tr><td>KO 行情/估值/TTM</td><td>stockanalysis.com/stocks/ko/（2026-10-27 16:00 EDT）</td></tr>
+          <tr><td>13F 机构持仓</td><td>SEC EDGAR 13F-HR：Berkshire / BlackRock / Vanguard / Norges</td></tr>
+          <tr><td>CCEP / KOF 装瓶商</td><td>CCEP Form 6-K 2026-08-04；KOF Form 6-K 2026-10-26</td></tr>
+          <tr><td>农夫山泉</td><td>stockanalysis.com/quote/hkg/9633/（2026-10-28 16:08 HKT）</td></tr>
+          <tr><td>美国 10 年期国债</td><td>FRED DGS10（最新 2026-10-26，10 月均值 4.99%）</td></tr>
+          <tr><td>同业估值对比</td><td>stockanalysis.com（PEP/MCD/PG/JNJ/KOF/伊利/茅台/海天）</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="dot"></span>B. 无法验证的数据（明确列出）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>数据项</th><th>影响</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>KO 逐年有机营收增速序列（2015–2025）</td><td>无法做 20 年有机增长趋势分析</td></tr>
+          <tr><td>2</td><td>KO FCF Yield / EV-EBITDA 20 年精确历史分位</td><td>仅区间估算</td></tr>
+          <tr><td>3</td><td>S&P 500 2004–2026 含息总回报序列</td><td>"跑输大盘"方向可靠，精确超额幅度不可靠</td></tr>
+          <tr><td>4</td><td>GLP-1 对含糖饮料的量化影响</td><td>10-K 全文 0 次命中，公司零量化披露</td></tr>
+          <tr><td>5</td><td>关税 / 含糖税的量化影响</td><td>10-K 8 次全为模板语言，Q3 财报 0 次提及</td></tr>
+          <tr><td>6</td><td>第三方零售扫描（Nielsen/IRI）货架份额、Vending 库存</td><td>只能用 UCV / 浓缩液 / 份额三个替代指标</td></tr>
+          <tr><td>7</td><td>农夫山泉固定派息率政策原文</td><td>未取得招股书/年报条款</td></tr>
+          <tr><td>8</td><td>KO FY2027 一致预期</td><td>付费墙，只能用公司自身指引</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <div class="foot">
+      <b>股哥·投研部</b> · 2026-10-28 · 本报告基于公开财报与第三方数据整理，仅供研究参考。
+      <div class="disclaimer"><b>免责声明：</b>本报告仅供研究参考，不构成投资建议。所有数据均标注来源，无法验证项已明确列出（见附录 B）。价格与估值时点为 2026-10-27/28，实际交易前请复核最新报价。投资有风险，决策需谨慎。</div>
+    </div>
+
+  </div>
+</div>
+
+<button id="toTop" title="回到顶部">↑</button>
+<script>
+  const toTop=document.getElementById('toTop');
+  window.addEventListener('scroll',()=>{toTop.classList.toggle('show',window.scrollY>500)});
+  toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  const links=[...document.querySelectorAll('.toc a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){
+      const id='#'+e.target.id;
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')===id));
+    }});
+  },{rootMargin:'-30% 0px -60% 0px'});
+  secs.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
